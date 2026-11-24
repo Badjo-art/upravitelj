@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gym oprema</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" type="module"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Gym oprema</h1>
+      <p>Popis opreme koju želiš kupiti za trening.</p>
+    </header>
+
+    <form id="add-form" class="panel" novalidate>
+      <h2>Nova oprema</h2>
+      <div>
+        <label for="title">Naziv</label>
+        <input id="title" name="title" type="text" required minlength="2"
+          placeholder="Npr. Pojas za dizanje utega" aria-describedby="title-error">
+        <p id="title-error" class="error" aria-live="polite"></p>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label for="category">Kategorija</label>
+          <select id="category" name="category" required aria-describedby="category-error">
+            <option value="">Odaberi kategoriju</option>
+            <option value="utezi">Utezi</option>
+            <option value="dodaci">Dodaci za trening</option>
+            <option value="sprave">Sprave</option>
+          </select>
+          <p id="category-error" class="error" aria-live="polite"></p>
+        </div>
+        <div>
+          <label for="price">Cijena (€)</label>
+          <input id="price" name="price" type="number" required min="1" max="1000" step="1"
+            placeholder="Npr. 25" aria-describedby="price-error">
+          <p id="price-error" class="error" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <label class="checkbox">
+        <input name="bought" type="checkbox"> Već kupljeno
+      </label>
+      <button type="submit" class="primary">Dodaj opremu</button>
+      <p id="message" class="message" aria-live="polite"></p>
+    </form>
+
+    <section aria-labelledby="list-heading">
+      <h2 id="list-heading">Popis opreme</h2>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Pretraži po nazivu" aria-label="Pretraga po nazivu">
+        <select id="category-filter" aria-label="Filtriraj po kategoriji">
+          <option value="all">Sve kategorije</option>
+        </select>
+        <select id="sort" aria-label="Sortiranje">
+          <option value="title">Naziv (A–Ž)</option>
+          <option value="price-asc">Cijena: od najniže</option>
+          <option value="price-desc">Cijena: od najviše</option>
+        </select>
+      </div>
+      <p id="counter" aria-live="polite"></p>
+      <ul id="list"></ul>
+      <p id="empty" class="panel empty" hidden>Nema opreme koja odgovara odabiru.</p>
+      <p class="hint">Savjet: tipka Esc u pretrazi briše upisani pojam.</p>
+    </section>
+  </main>
+</body>
+</html>
